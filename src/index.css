@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink font-sans text-zinc-300 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-indigo-500/40 text-white;
+  }
+
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-indigo-400/70 ring-offset-2 ring-offset-ink rounded-md;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  .gradient-text {
+    @apply bg-accent-gradient bg-clip-text text-transparent;
+  }
+
+  .section-pad {
+    @apply mx-auto w-full max-w-6xl px-5 py-20 sm:px-8 md:py-28;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05050a;
+}
+::-webkit-scrollbar-thumb {
+  background: #26263a;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a55;
+}
+
+/* Respect reduced motion for CSS-driven animation */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
