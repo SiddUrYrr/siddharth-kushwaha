@@ -9,75 +9,67 @@ export default function Education() {
     <section
       id="education"
       aria-labelledby="education-heading"
-      className="section-pad bg-surface/40"
+      className="section-pad border-y-2 border-line bg-raised/30"
     >
-      <SectionHeading
-        eyebrow="My journey"
-        title="Education"
-        headingId="education-heading"
-      />
+      <SectionHeading index="05" eyebrow="My journey" title="Education" headingId="education-heading" />
 
       <div className="relative mx-auto max-w-2xl">
-        {/* Animated timeline line */}
+        {/* Timeline spine */}
         <motion.span
           aria-hidden="true"
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="absolute left-[13px] top-2 h-[calc(100%-16px)] w-px origin-top bg-gradient-to-b from-indigo-400 via-violet-500/50 to-transparent"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="absolute bottom-2 left-[11px] top-2 w-0.5 origin-top bg-line"
         />
 
-        <ol className="space-y-10">
+        <ol className="space-y-8">
           {education.map((entry) => (
             <motion.li
               key={entry.institution}
-              initial={{ opacity: 0, x: -24 }}
+              initial={{ opacity: 0, x: -22 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.55, ease: "easeOut" }}
-              className="relative pl-12"
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              className="relative pl-11"
             >
-              {/* Timeline dot */}
+              {/* Timeline marker */}
               <span
                 aria-hidden="true"
                 className={cn(
-                  "absolute left-0 top-1 flex h-7 w-7 items-center justify-center rounded-full ring-1",
+                  "absolute left-0 top-1 flex h-6 w-6 items-center justify-center border-2 bg-ink",
                   entry.current
-                    ? "bg-indigo-500/20 text-indigo-300 ring-indigo-400/40 shadow-glow"
-                    : "bg-white/5 text-zinc-400 ring-white/15"
+                    ? "border-accent-bright text-accent-soft"
+                    : "border-line text-dim"
                 )}
               >
-                {entry.current ? (
-                  <GraduationCap size={14} />
-                ) : (
-                  <School size={14} />
-                )}
+                {entry.current ? <GraduationCap size={12} /> : <School size={12} />}
                 {entry.current && (
-                  <span className="animate-pulse-dot absolute inset-0 rounded-full bg-indigo-400/30" />
+                  <span className="animate-pulse-dot absolute inset-0 bg-accent-soft/30" />
                 )}
               </span>
 
-              <article className="glass rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-400/40 hover:shadow-glow">
+              <article className="panel p-6 transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-accent-bright hover:shadow-hard">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                  <h3 className="font-display text-lg font-semibold text-white">
+                  <h3 className="font-display text-lg font-bold uppercase tracking-tight text-paper">
                     {entry.institution}
                   </h3>
                   <span
                     className={cn(
-                      "rounded-full px-3 py-1 font-mono text-[11px] font-medium",
+                      "border-2 px-2.5 py-0.5 font-mono text-[11px] font-bold uppercase tracking-wider",
                       entry.current
-                        ? "bg-emerald-400/10 text-emerald-300 ring-1 ring-emerald-400/30"
-                        : "bg-white/5 text-zinc-400 ring-1 ring-white/10"
+                        ? "border-emerald-400/40 text-emerald-300"
+                        : "border-line text-dim"
                     )}
                   >
                     {entry.period}
                   </span>
                 </div>
-                <p className="mt-1.5 text-sm font-medium text-indigo-200/90">
+                <p className="mt-1.5 text-sm font-semibold text-accent-soft">
                   {entry.degree}
                 </p>
-                <p className="mt-2.5 text-sm leading-relaxed text-zinc-400">
+                <p className="mt-2.5 text-sm leading-relaxed text-dim">
                   {entry.detail}
                 </p>
               </article>

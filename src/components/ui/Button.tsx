@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "../../lib/utils";
 
-type Variant = "primary" | "outline" | "ghost";
+type Variant = "primary" | "outline";
 
 interface ButtonProps {
   children: ReactNode;
@@ -16,15 +16,13 @@ interface ButtonProps {
 }
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 disabled:pointer-events-none disabled:opacity-60";
+  "inline-flex cursor-pointer items-center justify-center gap-2.5 border-2 px-6 py-3 font-mono text-xs font-bold uppercase tracking-[0.18em] transition-all duration-200 disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-accent-gradient text-white shadow-glow hover:-translate-y-0.5 hover:shadow-glow-lg active:translate-y-0",
+    "border-ink bg-paper text-ink shadow-hard hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg active:translate-x-0 active:translate-y-0 active:shadow-hard",
   outline:
-    "border border-white/15 bg-white/[0.04] text-zinc-200 backdrop-blur hover:-translate-y-0.5 hover:border-indigo-400/50 hover:bg-white/[0.08] active:translate-y-0",
-  ghost:
-    "px-3 py-2 text-zinc-400 hover:text-white hover:bg-white/5 rounded-full",
+    "border-line bg-transparent text-paper hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-accent-bright hover:shadow-hard active:translate-x-0 active:translate-y-0 active:shadow-none",
 };
 
 export default function Button({

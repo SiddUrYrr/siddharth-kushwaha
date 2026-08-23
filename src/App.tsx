@@ -1,10 +1,12 @@
 import { MotionConfig } from "framer-motion";
 import About from "./components/About";
+import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Education from "./components/Education";
 import Focus from "./components/Focus";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+import Marquee from "./components/Marquee";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
@@ -12,17 +14,9 @@ import Skills from "./components/Skills";
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 -z-10"
-      >
-        <div className="absolute -left-40 top-1/4 h-[28rem] w-[28rem] rounded-full bg-indigo-700/10 blur-[140px]" />
-        <div className="absolute -right-40 bottom-1/4 h-[26rem] w-[26rem] rounded-full bg-violet-700/10 blur-[140px]" />
-      </div>
-
       <a
         href="#home"
-        className="sr-only z-[60] rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        className="sr-only z-[60] focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:border-2 focus:border-paper focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:font-bold focus:uppercase focus:tracking-wider focus:text-paper"
       >
         Skip to content
       </a>
@@ -31,9 +25,11 @@ export default function App() {
 
       <main>
         <Hero />
+        <Marquee />
         <About />
         <Skills />
         <Projects />
+        <Achievements />
         <Education />
         <Focus />
         <Contact />

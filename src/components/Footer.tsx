@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-white/10 bg-surface/60">
+    <footer className="border-t-2 border-line bg-raised/30">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-6 px-5 py-10 sm:flex-row sm:px-8">
         <div className="flex items-center gap-3">
           {socials.map((social) => (
@@ -20,14 +20,14 @@ export default function Footer() {
               rel="noopener noreferrer"
               aria-label={`${social.label} profile`}
               title={social.label}
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-zinc-400 transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-400/50 hover:text-white"
+              className="flex h-9 w-9 items-center justify-center border-2 border-line text-dim transition-all duration-150 hover:-translate-y-0.5 hover:border-accent-bright hover:text-paper"
             >
               <SocialIcon icon={social.icon} className="h-4 w-4" />
             </a>
           ))}
         </div>
 
-        <p className="text-center text-sm text-zinc-500">
+        <p className="text-center font-mono text-xs uppercase tracking-[0.18em] text-slate-500">
           © 2026 Siddharth Kushwaha. Built with curiosity &amp; code.
         </p>
 
@@ -36,7 +36,7 @@ export default function Footer() {
           onClick={backToTop}
           aria-label="Back to top"
           title="Back to top"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-zinc-400 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-400/50 hover:text-white hover:shadow-glow"
+          className="flex h-10 w-10 cursor-pointer items-center justify-center border-2 border-line text-dim transition-all duration-150 hover:-translate-y-0.5 hover:border-accent-bright hover:text-paper hover:shadow-hard-sm"
         >
           <ArrowUp size={17} aria-hidden="true" />
         </button>

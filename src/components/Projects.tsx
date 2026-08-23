@@ -18,25 +18,21 @@ function ProjectCard({ project }: { project: Project }) {
       initial={{ opacity: 0, scale: 0.94 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.94 }}
-      transition={{ duration: 0.35, ease: "easeOut" }}
-      className="group glass relative flex flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1.5 hover:border-indigo-400/40 hover:shadow-glow-lg"
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="group panel relative flex flex-col overflow-hidden transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:border-accent-bright hover:shadow-hard-lg"
     >
       {/* Visual */}
-      <div className="relative h-48 overflow-hidden border-b border-white/10">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-transparent via-transparent to-white/[0.04] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        />
-        <div className="h-full w-full transition-transform duration-500 group-hover:scale-[1.04]">
+      <div className="relative h-48 overflow-hidden border-b-2 border-line">
+        <div className="h-full w-full transition-transform duration-500 group-hover:scale-[1.03]">
           <ProjectVisual visual={project.visual} />
         </div>
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-display text-xl font-semibold text-white transition-colors group-hover:text-indigo-200">
+        <h3 className="font-display text-xl font-extrabold uppercase tracking-tight text-paper">
           {project.title}
         </h3>
-        <p className="mt-2.5 flex-1 text-sm leading-relaxed text-zinc-400">
+        <p className="mt-2.5 flex-1 text-sm leading-relaxed text-dim">
           {project.description}
         </p>
 
@@ -44,7 +40,7 @@ function ProjectCard({ project }: { project: Project }) {
           {project.technologies.map((tech) => (
             <li
               key={tech}
-              className="rounded-md border border-white/10 bg-indigo-500/10 px-2.5 py-1 font-mono text-[11px] font-medium text-indigo-200"
+              className="border border-line bg-raised/60 px-2.5 py-1 font-mono text-[11px] font-medium text-accent-soft"
             >
               {tech}
             </li>
@@ -56,7 +52,7 @@ function ProjectCard({ project }: { project: Project }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-xs font-semibold text-zinc-200 transition-all duration-300 hover:border-indigo-400/50 hover:bg-white/[0.09] hover:text-white"
+            className="inline-flex cursor-pointer items-center gap-2 border-2 border-line px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-wider text-dim transition-colors duration-150 hover:border-accent-bright hover:text-paper"
           >
             <FolderGit2 size={14} aria-hidden="true" />
             GitHub
@@ -66,7 +62,7 @@ function ProjectCard({ project }: { project: Project }) {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-accent-gradient px-4 py-2 text-xs font-semibold text-white shadow-glow transition-all duration-300 hover:shadow-glow-lg hover:brightness-110"
+              className="inline-flex cursor-pointer items-center gap-2 border-2 border-ink bg-accent px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-wider text-paper shadow-hard-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-hard active:translate-y-0 active:shadow-hard-sm"
             >
               <ExternalLink size={14} aria-hidden="true" />
               Live Demo
@@ -74,11 +70,6 @@ function ProjectCard({ project }: { project: Project }) {
           )}
         </div>
       </div>
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-accent-gradient opacity-0 transition-opacity duration-500 group-hover:opacity-80"
-      />
     </motion.article>
   );
 }
@@ -91,6 +82,7 @@ export default function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-heading" className="section-pad">
       <SectionHeading
+        index="03"
         eyebrow="My work"
         title="Featured Projects"
         subtitle="A selection of projects I've built while exploring software development, AI, and modern technology."
@@ -100,7 +92,7 @@ export default function Projects() {
       <div
         role="group"
         aria-label="Filter projects by category"
-        className="mb-10 flex flex-wrap justify-center gap-2.5"
+        className="mb-10 flex flex-wrap gap-2.5"
       >
         {projectFilters.map((f) => (
           <button
@@ -109,10 +101,10 @@ export default function Projects() {
             onClick={() => setFilter(f)}
             aria-pressed={filter === f}
             className={cn(
-              "rounded-full px-5 py-2 text-sm font-medium transition-all duration-300",
+              "cursor-pointer border-2 px-5 py-2 font-mono text-xs font-semibold uppercase tracking-wider transition-all duration-150",
               filter === f
-                ? "bg-accent-gradient text-white shadow-glow"
-                : "border border-white/10 bg-white/[0.03] text-zinc-400 hover:border-indigo-400/40 hover:text-white"
+                ? "border-accent-bright bg-accent text-paper shadow-hard-sm"
+                : "border-line text-dim hover:border-accent-bright hover:text-paper"
             )}
           >
             {f}
@@ -128,13 +120,13 @@ export default function Projects() {
         </AnimatePresence>
       </motion.div>
 
-      <p className="mt-10 text-center font-mono text-sm text-zinc-500">
+      <p className="mt-10 font-mono text-sm text-slate-500">
         More experiments live on my{" "}
         <a
           href="https://github.com/SiddUrYrr"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-indigo-300 underline-offset-4 hover:underline"
+          className="text-accent-soft underline underline-offset-4 hover:text-paper"
         >
           GitHub
         </a>

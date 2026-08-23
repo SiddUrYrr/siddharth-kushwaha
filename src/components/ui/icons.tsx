@@ -20,3 +20,20 @@ export function SocialIcon({ icon, className }: { icon: Social["icon"]; classNam
       return <LeetCodeIcon className={className} />;
   }
 }
+
+export function Monogram({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 40 32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={3.2}
+      focusable="false"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M21 6.6H9.1V16H21V25.4H7" strokeLinecap="square" />
+      <path d="M26.5 6.6V25.4M34 6.6L27.2 16L34 25.4" strokeLinecap="square" />
+    </svg>
+  );
+}
