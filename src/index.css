@@ -35,6 +35,12 @@
   }
 }
 
+/* Swarm Rebuild: hide the entry point the instant the experience starts, before
+   the engine snapshots the DOM, and keep it hidden while the overlay runs. */
+html[data-swarm-active] .swarm-trigger {
+  display: none !important;
+}
+
 /* Custom scrollbar — square, on-theme */
 ::-webkit-scrollbar {
   width: 10px;
