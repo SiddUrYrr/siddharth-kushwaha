@@ -4,11 +4,12 @@
 
 @layer base {
   html {
+    overflow-x: hidden;
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-ink font-sans text-dim antialiased;
+    @apply overflow-x-hidden bg-ink font-sans text-dim antialiased;
     text-rendering: optimizeLegibility;
   }
 

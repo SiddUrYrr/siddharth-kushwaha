@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, FolderGit2 } from "lucide-react";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import {
   projectFilters,
   projects,
@@ -11,9 +11,13 @@ import { cn } from "../lib/utils";
 import ProjectVisual from "./ProjectVisual";
 import SectionHeading from "./ui/SectionHeading";
 
-function ProjectCard({ project }: { project: Project }) {
+const ProjectCard = forwardRef<HTMLElement, { project: Project }>(function ProjectCard(
+  { project },
+  ref
+) {
   return (
     <motion.article
+      ref={ref}
       layout
       initial={{ opacity: 0, scale: 0.94 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -72,7 +76,7 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
     </motion.article>
   );
-}
+});
 
 export default function Projects() {
   const [filter, setFilter] = useState<ProjectFilter>("All");
